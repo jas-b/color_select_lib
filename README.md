@@ -17,7 +17,7 @@ void handle_CS_close(int color) {
 #### 3. Create the window and show it:
 ```c
 CSWindow * myCSWindow = cswindow_create(
-  color, false, 
+  default_color, false, 
   (CSCloseHandler)handle_CS_close);
 
 cswindow_show(myCSWindow, true);
