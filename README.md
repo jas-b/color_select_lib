@@ -10,7 +10,7 @@ color selector library for use with pebble time
 ```
 #### 2. Define a handler to get the entered text:
 ```c
-void myCloseHandler(const char * text) {
+void handle_CS_close(int color) {
   // Do something
 }
 ```
@@ -18,7 +18,7 @@ void myCloseHandler(const char * text) {
 ```c
 CSWindow * myCSWindow = cswindow_create(
   color, false, 
-  (CSCloseHandler)handle_CS_close_edit);
+  (CSCloseHandler)handle_CS_close);
 
 cswindow_show(myCSWindow, true);
 ```
