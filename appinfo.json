@@ -1,0 +1,24 @@
+{
+    "appKeys": {
+        "dummy": 0
+    },
+    "capabilities": [
+        ""
+    ],
+    "companyName": "jas.b",
+    "longName": "color_selector",
+    "projectType": "native",
+    "resources": {
+        "media": []
+    },
+    "sdkVersion": "3",
+    "shortName": "color_selector",
+    "targetPlatforms": [
+        "basalt"
+    ],
+    "uuid": "7954c066-f9a6-4cb2-99dd-79a8d89be088",
+    "versionLabel": "1.0",
+    "watchapp": {
+        "watchface": false
+    }
+}
