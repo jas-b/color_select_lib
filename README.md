@@ -10,8 +10,12 @@ color selector library for use with pebble time
 ```
 #### 2. Define a handler to get the entered text:
 ```c
-void handle_CS_close(int color) {
+void handle_CS_close(int color_argb) {
+  GColor color.argb = color_argb;
   // Do something
+  
+  // or use directly
+  text_layer_set_background_color(text_layer_name, (GColor){.argb = color_argb});
 }
 ```
 #### 3. Create the window and show it:
