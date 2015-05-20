@@ -8,7 +8,7 @@ color selector library for use with pebble time
 ```c
 #include "color_sel_lib.h"
 ```
-#### 2. Define a handler to get the entered text:
+#### 2. Define a handler to get the entered color:
 ```c
 void handle_CS_close(int color_argb) {
   GColor color.argb = color_argb;
@@ -32,12 +32,12 @@ cswindow_show(myCSWindow, true);
 This holds information about the CS Window. It is created with ```cswindow_create()``` and must be passed to the other interface functions.
 
 ### Handlers
-### void (*CSCloseHandler)(const char * text)
-This is a handler that is fired when the user accepts their entered text and closes the window.  It is used by ```cswindow_create()```.
+### void (*CSCloseHandler)(const int * color_argb)
+This is a handler that is fired when the user accepts the color and closes the window.  It is used by ```cswindow_create()```.
 
 |Parameter|Description|
 |---|---|
-|text|The entered text.|
+|color_argb|The selected color (integer .argb value).|
 
 ## Functions
 ### cswindow_create
@@ -46,15 +46,15 @@ CSWindow * cswindow_create(
     int default_color, bool full_palette,
     CSCloseHandler closeHandler)
 ```
-Creates a new CSWindow, given the default color, full palette and callback function.
+Creates a new CSWindow, given the default color, full palette switch and callback function.
 
-The user can toggle between full colors or a smaller subset by holding the SELECT buttons.
+The user can toggle between full colors or a smaller subset by holding the SELECT button.
 
 |Parameter|Description|
 |---|---|
-|**default_color**|The default color that the window will try to match. This may be null.|
-|**full_palette**|true to use all 64 color, false to use a subset of 11 main colors. This may be null.|
-|**closeHandler**|The CSCloseHandler to fire when the keyboard closes. This may be null.|
+|**default_color**|The default color that the window will try to match.|
+|**full_palette**|true to use all 64 color, false to use a subset of 11 main colors.|
+|**closeHandler**|The CSCloseHandler to fire when the keyboard closes.|
 
 #### Returns
 A new ```CSWindow``` structure.
