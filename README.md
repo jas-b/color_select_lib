@@ -1,8 +1,8 @@
-# color_select_lib
+## color_select_lib
 
 color selector library for use with pebble time
 
-# Usage
+## Usage
 
 #### 1. Add color_sel_lib.h and color_sel_lib.c to your Pebble project.
 ```c
