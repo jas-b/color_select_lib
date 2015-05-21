@@ -13,8 +13,7 @@ static char disp_text[24];
 static void window_load(Window *window);
 static void click_config_provider(void *context);
 static void click_handler(ClickRecognizerRef recognizer, void *context);
-void handle_CS_close_edit(uint8_t * selected_color);
-
+void handle_CS_close_edit(int selected_color);
 
 static void window_load(Window *window) {
   Layer *window_layer = window_get_root_layer(window);
@@ -48,14 +47,15 @@ static void click_handler(ClickRecognizerRef recognizer, void *context) {
 
 }
 
-void handle_CS_close_edit(uint8_t * selected_color) {
+void handle_CS_close_edit(int selected_color) {
 //  cswindow_destroy(myCSWindow);
-  color = (int)selected_color;
   APP_LOG(APP_LOG_LEVEL_INFO, "selection");
   APP_LOG(APP_LOG_LEVEL_INFO, "back");
-  snprintf(disp_text, 24, "%d", color);
+  snprintf(disp_text, 24, "%d", selected_color);
   APP_LOG(APP_LOG_LEVEL_INFO, disp_text);
-  window_set_background_color(window, (GColor){.argb = color});
+  GColor Bcolor = (GColor){.argb = selected_color};
+  window_set_background_color(window, Bcolor);
+//  window_set_background_color(window, (GColor){.argb = color});
   text_layer_set_text(text_layer, disp_text);
 }
 

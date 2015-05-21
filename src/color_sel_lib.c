@@ -1,14 +1,18 @@
 /*
 The MIT License (MIT)
-Copyright (c) 2015 jas-b
+
+Copyright (c) 2015 Jason Brand
+
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
+
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
+
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -43,8 +47,9 @@ const uint8_t cs_order[][64] = {
     8, 9, 10, 11, 12, 13, 14, 15,  
   }, 
   {
-    0, 3, 11, 12, 15, 35, 
-    48, 51, 56, 60, 63, 
+    0, 3, 11, 12, 
+    15, 35, 48, 51, 
+    56, 60, 63, 
 /*
     1, 2, 4, 5, 6, 7, 
     8, 9, 10, 13, 14, 
@@ -263,7 +268,7 @@ void cs_up_click(ClickRecognizerRef recognizer, void * context) {
 //  text_layer_set_text(select_layer, "Up");
 	cs_info("Up clicked");
   if (choice == 0) {
-    choice = CS_NUMCOLORS[color_set] - 1;
+    choice = CS_NUMCOLORS[color_set]-1;
   } else {
     choice--;
   }
@@ -273,7 +278,7 @@ void cs_down_click(ClickRecognizerRef recognizer, void * context) {
 	CSWindow *w = (CSWindow*)context;
 //  text_layer_set_text(select_layer, "Down");
 	cs_info("Down clicked");
-  if (choice == CS_NUMCOLORS[color_set] - 1) {
+  if (choice == CS_NUMCOLORS[color_set]-1) {
     choice = 0;
   } else {
     choice++;
