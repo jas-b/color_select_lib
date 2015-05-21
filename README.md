@@ -11,7 +11,7 @@ color selector library for use with pebble time
 #### 2. Define a handler to get the entered color:
 ```c
 void handle_CS_close(int color_argb) {
-  GColor color.argb = color_argb;
+  GColor color = (GColor){.argb = color_argb};
   // Do something
   
   // or use directly
@@ -26,6 +26,12 @@ CSWindow * myCSWindow = cswindow_create(
 
 cswindow_show(myCSWindow, true);
 ```
+
+|Parameter|Description|
+|---|---|
+|**default_color**|The default color that the window will try to match.|
+|**full_palette**|true to use all 64 color, false to use a subset of 11 main colors. The user can toggle between full colors or a smaller subset by holding the SELECT button.|
+|**closeHandler**|The CSCloseHandler to fire when the keyboard closes.|
 
 ## Structures
 ### CSWindow
@@ -48,26 +54,8 @@ CSWindow * cswindow_create(
 ```
 Creates a new CSWindow, given the default color, full palette switch and callback function.
 
-The user can toggle between full colors or a smaller subset by holding the SELECT button.
-
-|Parameter|Description|
-|---|---|
-|**default_color**|The default color that the window will try to match.|
-|**full_palette**|true to use all 64 color, false to use a subset of 11 main colors.|
-|**closeHandler**|The CSCloseHandler to fire when the keyboard closes.|
-
 #### Returns
 A new ```CSWindow``` structure.
-
-### cswindow_destroy
-```c
-void cswindow_destroy(CSWindow * window)
-```
-Destroys a ```CSWindow``` previously created by ```cswindow_create()```.
-
-|Parameter|Description|
-|---|---|
-|**window**|The ```CSWindow``` to destroy.|
 
 ### cswindow_show
 ```c
