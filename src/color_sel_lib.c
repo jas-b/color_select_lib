@@ -173,7 +173,7 @@ void cs_draw_update_proc(Layer *layer, GContext *context) {
 
   for (int i = 0; i < CS_NUMCOLORS[color_set]; i++) {
     graphics_context_set_fill_color(context, (GColor){.argb = cs_order[color_set][i] + CS_COLOR_OFFSET});
-    graphics_fill_rect(context, (GRect){.origin = {cs_x[color_set][i], cs_y[color_set][i]}, .size = {CS_X_SIZE[color_set], CS_Y_SIZE[color_set]}}, 0, GCornerNone);
+    graphics_fill_rect(context, (GRect){.origin = {cs_x[color_set][i]+1, cs_y[color_set][i]+1}, .size = {CS_X_SIZE[color_set]-2, CS_Y_SIZE[color_set]-2}}, 5, GCornersAll);
   }
 
   cs_info("Drawing Selection Box");
@@ -183,11 +183,12 @@ void cs_draw_update_proc(Layer *layer, GContext *context) {
   cs_info(buff);
 
   if (choice < 32) {
-    graphics_context_set_stroke_color(context, GColorWhite);
+    graphics_context_set_stroke_color(context, GColorBlack);
   } else {
     graphics_context_set_stroke_color(context, GColorBlack);
   }
-  graphics_draw_rect(context,(GRect){.origin = {cs_x[color_set][choice], cs_y[color_set][choice]}, .size = {CS_X_SIZE[color_set], CS_Y_SIZE[color_set]}});
+  graphics_draw_round_rect(context, (GRect){.origin = {cs_x[color_set][choice], cs_y[color_set][choice]}, .size = {CS_X_SIZE[color_set], CS_Y_SIZE[color_set]}}, 6);
+  graphics_draw_round_rect(context, (GRect){.origin = {cs_x[color_set][choice]+1, cs_y[color_set][choice]+1}, .size = {CS_X_SIZE[color_set]-2, CS_Y_SIZE[color_set]-2}}, 5);
 }
 
 void cswindow_destroy(CSWindow *window) {

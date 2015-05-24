@@ -41,7 +41,11 @@ typedef void (*CSCloseHandler)(const uint8_t select);
  * Creates a new CSWindow, given the callback function.
  *
  *   void myCloseHandler(int selected_color) {
+ *     GColor color = (GColor){.argb = selected_color};
  *      // Do something
+ *
+ *  // or use directly
+ *     window_set_background_color(window, (GColor){.argb = selected_color});
  *   }
  *
  *   CSWindow * createCSWindow() {
