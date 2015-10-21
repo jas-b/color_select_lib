@@ -39,7 +39,7 @@ static void click_handler(ClickRecognizerRef recognizer, void *context) {
   APP_LOG(APP_LOG_LEVEL_INFO, "create");
 
   CSWindow * myCSWindow = cswindow_create(
-    color, false, (CSCloseHandler)handle_CS_close_edit);
+    color, true, (CSCloseHandler)handle_CS_close_edit);
 
   APP_LOG(APP_LOG_LEVEL_INFO, "show");
 
@@ -49,13 +49,14 @@ static void click_handler(ClickRecognizerRef recognizer, void *context) {
 
 void handle_CS_close_edit(int selected_color) {
 //  cswindow_destroy(myCSWindow);
+  color = selected_color;
   APP_LOG(APP_LOG_LEVEL_INFO, "selection");
   APP_LOG(APP_LOG_LEVEL_INFO, "back");
   snprintf(disp_text, 24, "%d", selected_color);
   APP_LOG(APP_LOG_LEVEL_INFO, disp_text);
   GColor Bcolor = (GColor){.argb = selected_color};
   window_set_background_color(window, Bcolor);
-//  window_set_background_color(window, (GColor){.argb = color});
+//  window_set_background_color(window, (GColor){.argb = selected_color});
   text_layer_set_text(text_layer, disp_text);
 }
 

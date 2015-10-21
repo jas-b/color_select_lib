@@ -14,10 +14,11 @@
     "sdkVersion": "3",
     "shortName": "color_selector",
     "targetPlatforms": [
-        "basalt"
+        "basalt",
+        "chalk"
     ],
     "uuid": "7954c066-f9a6-4cb2-99dd-79a8d89be088",
-    "versionLabel": "1.0",
+    "versionLabel": "1.1",
     "watchapp": {
         "watchface": false
     }
